@@ -56,7 +56,7 @@ if __name__ == "__main__":
 
     eigvec = torch.load(args.factor)["eigvec"].to(args.device)
     ckpt = torch.load(args.ckpt)
-    g = Generator(args.size, 512, 8, channel_multiplier=args.channel_multiplier).to(args.device)
+    g = Generator(args.size, 512, 2, channel_multiplier=args.channel_multiplier).to(args.device)
     g.load_state_dict(ckpt["g_ema"], strict=False)
 
     trunc = g.mean_latent(4096)
